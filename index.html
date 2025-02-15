@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Bintang medika - Data Dokter</title>
+   <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+   <link rel="stylesheet" href="output.css">
+</head>
+
+<body class="">
+   <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
+      type="button"
+      class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+      <span class="sr-only">Open sidebar</span>
+      <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+         xmlns="http://www.w3.org/2000/svg">
+         <path clip-rule="evenodd" fill-rule="evenodd"
+            d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
+         </path>
+      </svg>
+   </button>
+
+
+   <div class="p-4 sm:ml-64">
+      <aside id="default-sidebar"
+         class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+         aria-label="Sidebar">
+         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+            <ul class="space-y-2 font-medium">
+               <li class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  onclick="ShowDoctor()">
+                  <span class="flex-1 ms-3 whitespace-nowrap">Dokter</span>
+                  <span
+                     class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-bold text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300 ">></span>
+               </li>
+               <ul>
+                  <li id="doctor" class="hidden">
+                     <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <span class="ms-3">Data Dokter</span>
+                     </a>
+                  </li>
+                  <li id="doctor" class="hidden">
+                     <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <span class="ms-3">Jadwal Dokter</span>
+                     </a>
+                  </li>
+                  <li id="doctor" class="hidden">
+                     <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <span class="ms-3">Janji temu</span>
+                     </a>
+                  </li>
+                  <li id="doctor" class="hidden">
+                     <a href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <span class="ms-3">Spesialis</span>
+                     </a>
+                  </li>
+               </ul>
+               <li>
+                  <a href="#"
+                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                     <span class="flex-1 ms-3 whitespace-nowrap">Apoteker</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="#"
+                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                     <span class="flex-1 ms-3 whitespace-nowrap">Blogger</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="#"
+                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                     <span class="flex-1 ms-3 whitespace-nowrap">Pasien</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="#"
+                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                     <span class="flex-1 ms-3 text-red-500 whitespace-nowrap">Logout</span>
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </aside>
+      <div class="flex justify-between mb-5">
+         <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="ShowModalCreateDoctor()">Tambah Dokter</button>
+
+         <input type="text" id="email" name="search"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Cari" required />
+      </div>
+      <table>
+         <thead>
+            <tr>
+               <th class="text-left">No</th>
+               <th class="text-left">Nama</th>
+               <th class="text-left">Spesialis</th>
+               <th class="text-left">Nomor Telepon</th>
+               <th class="text-left">Email</th>
+               <th class="text-left">Alamat</th>
+               <th class="text-left">Aksi</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr data-id="1">
+               <td class="text-left">No</td>
+               <td class="text-left">Nama</td>
+               <td class="text-left">Spesialis</td>
+               <td class="text-left">Nomor Telepon</td>
+               <td class="text-left">Email</td>
+               <td class="text-left">Alamat</td>
+               <td class="text-left"><button onclick="UpdateDokter(1)" class="text-black bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Ubah</button></td>
+            </tr>
+         </tbody>
+      </table>
+      <div class="modal-doctor">
+         <div class="modal-doctor-content">
+            <div class="modal-doctor-content-header">
+               <h1 class="text-center">Tambah Dokter</h1>
+            </div>
+            <div class="modal-doctor-content-content">
+               
+               <form class="max-w-sm mx-auto">
+                  <div class="mb-5">
+                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Nama</label>
+                     <input type="email" id="email" name="nama"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="name@flowbite.com" required />
+                  </div>
+                  <div class="mb-5">
+                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Spesialis</label>
+                     <input type="text" id="password" name="spesialis"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required />
+                  </div>
+                  <div class="mb-5">
+                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Nomor telepon</label>
+                     <input type="text" id="password" name="nomor telepon"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required />
+                  </div>
+                  <div class="mb-5">
+                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Email</label>
+                     <input type="text" id="password" name="email"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required />
+                  </div>
+                  <div class="mb-5">
+                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Alamat</label>
+                     <input type="text" id="password" name="alamat"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required />
+                  </div>
+                  <div class="flex justify-between">
+                     <button type="submit" id="submit"
+                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit
+                  </button>
+                  <button type="submit" id="button"
+                     class="text-white bg-red-700 hover:bg-red-400 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 hover:bg-red-800 dark:focus:ring-red-800" onclick="hideModalCreate()">Canceled
+                  </button>
+                  </div>
+               </form>
+            </div>
+            <div class="modal-doctor-content-footer"></div>
+         </div>
+      </div>
+      <div class="modal-doctor-update">
+         <div class="modal-doctor-update-content">
+            <div class="modal-doctor-update-content-header">
+               <h1 class="text-center font-bold ">Ubah Data Dokter</h1>
+            </div>
+            <div class="modal-doctor-update-content-content">
+               <form class="max-w-sm mx-auto">
+                  <div class="mb-5">
+                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Nama</label>
+                     <input type="email" id="email" name="nama"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="name@flowbite.com" required />
+                  </div>
+                  <div class="mb-5">
+                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Spesialis</label>
+                     <input type="text" id="password" name="spesialis"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required />
+                  </div>
+                  <div class="mb-5">
+                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Nomor telepon</label>
+                     <input type="text" id="password" name="nomor telepon"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required />
+                  </div>
+                  <div class="mb-5">
+                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Email</label>
+                     <input type="text" id="password" name="email"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required />
+                  </div>
+                  <div class="mb-5">
+                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Alamat</label>
+                     <input type="text" id="password" name="alamat"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        required />
+                  </div>
+                  <div class="flex justify-between">
+                     <button type="submit" id="submit" class="text-black bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Updated</button>
+                     <button type="button" onclick="hideModalUpdate()" id="submit" class="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Canceled</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+      <script src="index.js"></script>
+      <script src="script.js"></script>
+</body>
+
+</html>
